@@ -8,26 +8,40 @@ namespace DesignPatterns
     sealed class Singleton
     {
         private static int counter = 0;
-        private static readonly object lockObj = new object();
-        private static Singleton instance = null;
+
+        //Not needed for EAGER Loading
+        //private static readonly object lockObj = new object();
+        
+        // Do this for LAZY initialization
+        //private static Singleton instance = null;
+
+        // Do this for LAZY Loading with Lazy<> keyword. Available .Net 4.0 and later
+        private static readonly Lazy<Singleton> lazyInstance = new Lazy<Singleton>(()=> new Singleton());
+
+        // EAGER Loaging
+        //private static readonly Singleton eagerInstance = new Singleton();
+
         public static Singleton GetInstance
         {
             get
             {
                 // Create an object only the first time 
+
                 // The object creation is delayed. It will not happen until this property is called. 
                 // This late initialization is also called - LAZY INITIALIZATION (usually okay with single threaded applications)
-                if (instance == null)
-                {
-                    lock (lockObj)
-                    {
-                        if (instance == null)
-                        {
-                            instance = new Singleton();
-                        }
-                    }
-                }
-                return instance;
+                //if (instance == null)
+                //{
+                //    lock (lockObj)
+                //    {
+                //        if (instance == null)
+                //        {
+                //            instance = new Singleton();
+                //        }
+                //    }
+                //}
+
+                //return eagerInstance;
+                return lazyInstance.Value;
             }
         }
 
