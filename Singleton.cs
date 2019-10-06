@@ -13,7 +13,9 @@ namespace DesignPatterns
         {
             get
             {
-                //Create an object only the first time 
+                // Create an object only the first time 
+                // The object creation is delayed. It will not happen until this property is called. 
+                // This late initialization is also called - LAZY INITIALIZATION (usually okay with single threaded applications)
                 if (instance == null)
                 {
                     instance = new Singleton();

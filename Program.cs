@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 
 namespace DesignPatterns
 {
@@ -6,17 +7,34 @@ namespace DesignPatterns
     {
         static void Main(string[] args)
         {
-            Singleton singletonEmp = Singleton.GetInstance;
-            singletonEmp.PrintDetails("This is the first message for employees...");
-
-            Singleton singletonContract = Singleton.GetInstance;
-            singletonContract.PrintDetails("Sending a message for Contractors ...");
-
-            //Singleton.DerivedSingleton derived = new Singleton.DerivedSingleton();
-            //derived.PrintDetails("Is this a hack? ");
+            CallSingleton();
 
             Console.ReadLine();
 
+        }
+
+        static void CallSingleton()
+        {
+            Parallel.Invoke(
+                () => PrintContractorDetails(), 
+                () => PrintEmployeeDetails()
+            );
+
+            //SINGLETON: Prove that the object can be recreated with a derived class
+            //Singleton.DerivedSingleton derived = new Singleton.DerivedSingleton();
+            //derived.PrintDetails("Is this a hack? ");
+        }
+
+        private static void PrintContractorDetails()
+        {
+            Singleton singletonContract = Singleton.GetInstance;
+            singletonContract.PrintDetails("Sending a message for Contractors ...");
+        }
+
+        private static void PrintEmployeeDetails()
+        {
+            Singleton singletonEmp = Singleton.GetInstance;
+            singletonEmp.PrintDetails("This is the first message for employees...");
         }
     }
 }
