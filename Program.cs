@@ -9,12 +9,14 @@ namespace DesignPatterns
         {
             CallSingleton();
 
-            Console.ReadLine();
 
+
+            Console.ReadLine();
         }
 
         static void CallSingleton()
         {
+            //Proves paralled invoking of two methods can violate principle of Singleton as both threads may initialize the object at the same time.
             Parallel.Invoke(
                 () => PrintContractorDetails(), 
                 () => PrintEmployeeDetails()
