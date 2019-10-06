@@ -8,6 +8,7 @@ namespace DesignPatterns
     sealed class Singleton
     {
         private static int counter = 0;
+        private static readonly object lockObj = new object();
         private static Singleton instance = null;
         public static Singleton GetInstance
         {
@@ -18,7 +19,13 @@ namespace DesignPatterns
                 // This late initialization is also called - LAZY INITIALIZATION (usually okay with single threaded applications)
                 if (instance == null)
                 {
-                    instance = new Singleton();
+                    lock (lockObj)
+                    {
+                        if (instance == null)
+                        {
+                            instance = new Singleton();
+                        }
+                    }
                 }
                 return instance;
             }
