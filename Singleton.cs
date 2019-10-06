@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DesignPatterns
 {
-    
+
     sealed class Singleton
     {
         private static int counter = 0;
@@ -12,7 +12,7 @@ namespace DesignPatterns
         //Not needed for EAGER Loading
         //private static readonly object lockObj = new object();
         
-        // Do this for LAZY initialization
+        //Do this for LAZY initialization
         //private static Singleton instance = null;
 
         // Do this for LAZY Loading with Lazy<> keyword. Available .Net 4.0 and later

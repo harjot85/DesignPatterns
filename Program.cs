@@ -27,7 +27,7 @@ namespace DesignPatterns
             //derived.PrintDetails("Is this a hack? ");
         }
 
-        private static void PrintContractorDetails()
+        private static void PrintContractorDetails() 
         {
             Singleton singletonContract = Singleton.GetInstance;
             singletonContract.PrintDetails("Sending a message for Contractors ...");
