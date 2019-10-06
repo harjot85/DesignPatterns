@@ -5,7 +5,7 @@ using System.Text;
 namespace DesignPatterns
 {
     
-    class Singleton
+    sealed class Singleton
     {
         private static int counter = 0;
         private static Singleton instance = null;
@@ -33,9 +33,12 @@ namespace DesignPatterns
             Console.WriteLine(message);
         }
 
-        public class DerivedSingleton : Singleton
-        {
+        //Create a nested class that derives the Singleton class to prove that it is necessary to have the base class marked as SEALED. 
+        //Otherwise the derived class can access the constructor of the base class which will allow multiple object creation of the base class, 
+        // and hence will violate the principle of SINGLETON pattern
+        //public class DerivedSingleton : Singleton
+        //{
 
-        }
+        //}
     }
 }

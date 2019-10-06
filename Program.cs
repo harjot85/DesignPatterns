@@ -12,8 +12,8 @@ namespace DesignPatterns
             Singleton singletonContract = Singleton.GetInstance;
             singletonContract.PrintDetails("Sending a message for Contractors ...");
 
-            Singleton.DerivedSingleton derived = new Singleton.DerivedSingleton();
-            derived.PrintDetails("Is this a hack? ");
+            //Singleton.DerivedSingleton derived = new Singleton.DerivedSingleton();
+            //derived.PrintDetails("Is this a hack? ");
 
             Console.ReadLine();
 
